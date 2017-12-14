@@ -1,15 +1,20 @@
 import React from 'react';
 
-const toTitleCase = (text) => text[0].toUpperCase() + text.substring(1);
+const toTitleCase = (text) => text
+  ? text[0].toUpperCase() + text.substring(1)
+  : "";
 
 const toBookCase = (text) => {
   let texts = [];
+  if (text) {
+    for (const word of text.split(" ")) {
+      texts.push(toTitleCase(word));
+    }
 
-  for (const word of text.split(" ")) {
-    texts.push(toTitleCase(word));
+    return texts.join(" ");
   }
-
-  return texts.join(" ");
+  
+  return "";
 };
 
 const Card = ({ user }) => {
